@@ -4,9 +4,9 @@ public class BankAccount {
 	//balance
 	//credentials
 
-	private static double balance;
-	private static String AccountHolder;
-	private static String PIN;
+	private double balance;
+	private String AccountHolder;
+	private String PIN;
 	
 	BankAccount( String new_AccountHolder, String new_PIN ){
 		balance = 0;
@@ -15,7 +15,7 @@ public class BankAccount {
 	}
 	
 	//deposit method
-	public static void deposit( double myDeposit ){
+	public void deposit( double myDeposit ){
 		if ( myDeposit > 0 ) {
 			balance = balance + myDeposit;
 			System.out.println("Deposit Completed.");
@@ -25,7 +25,7 @@ public class BankAccount {
 		}
 	}
 	//withdraw method	
-	public static void withdrawal( double withdrawal ){
+	public void withdrawal( double withdrawal ){
 		//overdraw catch
 		if ( withdrawal > balance ) {
 			System.out.println("Error: Overdrawn, deposit failed.");
@@ -37,11 +37,11 @@ public class BankAccount {
 		}
 	}
 	
-	public static double getBalance(){
+	public double getBalance(){
 		return balance;
 	}
 	
-	public static void bankStatement(){
+	public void bankStatement(){
 		System.out.println( AccountHolder + "'s Bank Statement");
 		System.out.println("Your Balance: " + getBalance());
 	}
@@ -63,22 +63,19 @@ public class BankAccount {
 		BankAccount myAccount = new BankAccount( Name, Password);
 		
 		//Issuing the first bank statement
-		bankStatement();
+		myAccount.bankStatement();
 		
 		//Making a deposit
-		deposit(1000);
+		myAccount.deposit(1000);
 		
 		//Making an impossible withdrawal
-		withdrawal(1001);
+		myAccount.withdrawal(1001);
 		
 		//Making a possible withdrawal
-		withdrawal(200);
+		myAccount.withdrawal(200);
 		
 		//Issuing a final bank statement
-		bankStatement();
-		
-		
-		
+		myAccount.bankStatement();
 	}
 }
 
